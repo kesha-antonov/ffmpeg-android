@@ -25,12 +25,6 @@ make distclean
 --enable-runtime-cpudetect \
 --sysroot="$NDK_SYSROOT" \
 --enable-pic \
---enable-libx264 \
---enable-libass \
---enable-libfreetype \
---enable-libfribidi \
---enable-libmp3lame \
---enable-fontconfig \
 --enable-pthreads \
 --disable-debug \
 --disable-ffserver \
@@ -38,8 +32,10 @@ make distclean
 --enable-hardcoded-tables \
 --disable-ffplay \
 --disable-ffprobe \
---enable-gpl \
---disable-asm \
+--enable-libopenh264 \
+--enable-yasm \
+--enable-asm \
+--disable-gpl \
 --disable-doc \
 --disable-shared \
 --enable-static \
@@ -47,8 +43,16 @@ make distclean
 --prefix="${2}/build/${1}" \
 --extra-cflags="-I${TOOLCHAIN_PREFIX}/include $CFLAGS" \
 --extra-ldflags="-L${TOOLCHAIN_PREFIX}/lib $LDFLAGS" \
---extra-libs="-lpng -lexpat -lm" \
 --extra-cxxflags="$CXX_FLAGS" || exit 1
+# --extra-libs="-lm" \
+# --enable-indev=libopenh264 \
+# --enable-libx264 \
+# --enable-libass \
+# --enable-libfreetype \
+# --enable-libfribidi \
+# --enable-libmp3lame \
+# --enable-fontconfig \
+# --extra-libs="-lpng -lexpat -lm" \
 
 make -j${NUMBER_OF_CORES} && make install || exit 1
 

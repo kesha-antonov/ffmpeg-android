@@ -5,6 +5,7 @@ libpng-*
 expat-*
 fribidi-*
 lame-*
+openh264
 
 # Created by http://www.gitignore.io
 

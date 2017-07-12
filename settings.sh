@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SUPPORTED_ARCHITECTURES=(armeabi-v7a x86)
+# SUPPORTED_ARCHITECTURES=(armeabi-v7a)
 ANDROID_NDK_ROOT_PATH=${ANDROID_NDK}
 if [[ -z "$ANDROID_NDK_ROOT_PATH" ]]; then
   echo "You need to set ANDROID_NDK environment variable, please check instructions"
@@ -9,7 +10,7 @@ fi
 ANDROID_API_VERSION=14
 NDK_TOOLCHAIN_ABI_VERSION=4.9
 
-NUMBER_OF_CORES=$(nproc)
+NUMBER_OF_CORES=$(sysctl -n hw.ncpu)
 HOST_UNAME=$(uname -m)
 TARGET_OS=android
 
